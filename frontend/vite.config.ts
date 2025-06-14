@@ -14,7 +14,18 @@ export default defineConfig({
       },
     },
   },
+  preview: {
+    host: true,
+    port: process.env.PORT ? parseInt(process.env.PORT) : 4173,
+    allowedHosts: process.env.RAILWAY_PUBLIC_DOMAIN 
+      ? [process.env.RAILWAY_PUBLIC_DOMAIN, 'localhost', '127.0.0.1']
+      : 'all'
+  },
   define: {
-    __API_BASE_URL__: JSON.stringify(process.env.VITE_API_URL || 'http://localhost:3001'),
+    __API_BASE_URL__: JSON.stringify(
+      process.env.VITE_API_URL || 
+      (process.env.RAILWAY_PUBLIC_DOMAIN ? `https://${process.env.RAILWAY_PUBLIC_DOMAIN}` : null) ||
+      'http://localhost:3001'
+    ),
   },
 })
