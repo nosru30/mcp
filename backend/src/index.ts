@@ -28,7 +28,7 @@ app.use(cors({
     if (process.env.NODE_ENV === 'production') {
       // 本番環境（Railway等）
       allowedOrigins = [
-        process.env.FRONTEND_URL,
+        process.env.VITE_FRONTEND_URL,
         process.env.CORS_ORIGIN,
         process.env.RAILWAY_PUBLIC_DOMAIN ? `https://${process.env.RAILWAY_PUBLIC_DOMAIN}` : null
       ].filter(Boolean)
