@@ -24,7 +24,7 @@ export default defineConfig({
   define: {
     __API_BASE_URL__: JSON.stringify(
       process.env.VITE_API_URL || 
-      (process.env.RAILWAY_PUBLIC_DOMAIN ? `https://${process.env.RAILWAY_PUBLIC_DOMAIN}` : null) ||
+      (process.env.VITE_BACKEND_URL ? process.env.VITE_BACKEND_URL : null) ||
       'http://localhost:3001'
     ),
   },
